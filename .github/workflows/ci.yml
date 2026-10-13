@@ -8,8 +8,8 @@ on:
 
 jobs:
   validate-and-test:
-    runs-on: ubuntu-22.04 
-    timeout-minutes: 15 
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository code
@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: 18.x
           cache: 'npm'
+          cache-dependency-path: src/package-lock.json
 
       - name: Install dependencies
         run: npm ci
