@@ -1,9 +1,12 @@
-name: Node.js Project CI
+---
+# yamllint disable-line rule:truthy
 on:
   push:
     branches: ["main", "master"]
   pull_request:
     branches: ["main", "master"]
+
+name: Node.js Project CI
 
 jobs:
   validate-and-test:
@@ -22,7 +25,9 @@ jobs:
           cache-dependency-path: src/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd src
+          npm ci
 
       - name: Run code validation (Linter)
         run: make lint
