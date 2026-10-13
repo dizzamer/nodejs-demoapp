@@ -1,12 +1,11 @@
 ---
-# yamllint disable-line rule:truthy
+name: Node.js Project CI
+
 on:
   push:
     branches: ["main", "master"]
   pull_request:
     branches: ["main", "master"]
-
-name: Node.js Project CI
 
 jobs:
   validate-and-test:
@@ -21,8 +20,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18.x
-          cache: 'npm'
-          cache-dependency-path: src/package-lock.json
 
       - name: Install dependencies
         run: |
